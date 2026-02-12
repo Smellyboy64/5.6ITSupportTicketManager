@@ -1,40 +1,45 @@
 ﻿using System;
 
-public class Ticket
+namespace ITSupportTicketManager
 {
-    public string Id { get; set; }
-    public string Description { get; set; }
-    public string Priority { get; set; } 
-    public string Status { get; set; }   
-    public DateTime DateCreated { get; set; }
-
-    public Ticket()
+    public class Ticket
     {
-        DateCreated = DateTime.Now;
-        Status = "Open";
-    }
+        public string Id { get; set; }
+        public string Description { get; set; }
+        public string Priority { get; set; } // Low, Medium, High
+        public string Status { get; set; }   // Open, In Progress, Closed
+        public DateTime DateCreated { get; set; }
 
-    public Ticket(string id, string description, string priority, string status)
-    {
-        Id = id;
-        Description = description;
-        Priority = priority;
-        Status = status;
-        DateCreated = DateTime.Now;
-    }
+        // Default constructor
+        public Ticket()
+        {
+            DateCreated = DateTime.Now;
+            Status = "Open";
+        }
 
-    public void CloseTicket()
-    {
-        Status = "Closed";
-    }
+        // Overloaded constructor
+        public Ticket(string id, string description, string priority, string status)
+        {
+            Id = id;
+            Description = description;
+            Priority = priority;
+            Status = status;
+            DateCreated = DateTime.Now;
+        }
 
-    public void ReopenTicket()
-    {
-        Status = "Open";
-    }
+        public void CloseTicket()
+        {
+            Status = "Closed";
+        }
 
-    public string GetSummary()
-    {
-        return $"[{Id}] ({Priority}) - \"{Description}\" | Status: {Status} | Created: {DateCreated:yyyy-MM-dd}";
+        public void ReopenTicket()
+        {
+            Status = "Open";
+        }
+
+        public string GetSummary()
+        {
+            return $"[{Id}] ({Priority}) - \"{Description}\" | Status: {Status} | Created: {DateCreated:yyyy-MM-dd}";
+        }
     }
 }
